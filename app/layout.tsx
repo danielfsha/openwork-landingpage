@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", inter.variable, "font-sans")}
+      className={cn("h-full overflow-x-hidden", "antialiased", inter.variable, "font-sans")}
     >
       <body className="min-h-full flex flex-col">
          <ThemeProvider
