@@ -47,15 +47,12 @@ function extractSnippetFromChildren(children: React.ReactNode): {
   language?: string;
 } {
   if (React.isValidElement(children) && children.type === "code") {
-    const className =
-      typeof children.props?.className === "string"
-        ? children.props.className
-        : "";
-
+    const p = children.props as Record<string, unknown>;
+    const className = typeof p?.className === "string" ? p.className : "";
     const languageMatch = className.match(/language-([a-zA-Z0-9_-]+)/);
 
     return {
-      code: flattenNodeText(children.props?.children),
+      code: flattenNodeText(p?.children as React.ReactNode),
       language: languageMatch?.[1],
     };
   }
